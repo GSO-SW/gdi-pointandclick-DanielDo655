@@ -20,7 +20,7 @@ namespace gdi_PointAndClick
             int h = this.ClientSize.Height;
 
             // Zeichenmittel
-            Brush b = new SolidBrush(Color.Lavender);
+            Brush b = new SolidBrush(Color.DarkOliveGreen);
 
 
             for (int i = 0; i < rectangles.Count; i++)
@@ -34,7 +34,7 @@ namespace gdi_PointAndClick
         {
             Point mausposition = e.Location;
 
-            Rectangle r = new Rectangle(mausposition.X, mausposition.Y, 40, 40);
+            Rectangle r = new Rectangle(mausposition.X-20, mausposition.Y-20, 40, 40);
 
             rectangles.Add(r);  // Kurze Variante: rectangles.Add( new Rectangle(...)  );
 
