@@ -25,6 +25,8 @@ namespace gdi_PointAndClick
             Brush gY = new SolidBrush(Color.GreenYellow);
             Brush hp = new SolidBrush(Color.HotPink);
 
+
+
             for (int i = 0; i < rectangles.Count; i++)
             {
                 g.FillRectangle(dOG, rectangles[i]);
@@ -34,10 +36,11 @@ namespace gdi_PointAndClick
 
         private void FrmMain_MouseClick(object sender, MouseEventArgs e)
         {
+            Random random = new Random();
             Point mausposition = e.Location;
             bool überlapppung = false;
 
-            Rectangle r = new Rectangle(mausposition.X-20, mausposition.Y-20, 40, 40);
+            Rectangle r = new Rectangle(mausposition.X-20, mausposition.Y-20, random.Next(1,50),random.Next(1,50) );
 
             rectangles.Add(r);// Kurze Variante: rectangles.Add( new Rectangle(...)  );
             
@@ -49,7 +52,6 @@ namespace gdi_PointAndClick
                     break;
                 }
             }
-
             
             Refresh();
         }
