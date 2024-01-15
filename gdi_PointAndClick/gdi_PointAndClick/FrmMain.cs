@@ -20,12 +20,14 @@ namespace gdi_PointAndClick
             int h = this.ClientSize.Height;
 
             // Zeichenmittel
-            Brush b = new SolidBrush(Color.DarkOliveGreen);
-
+            Brush dOG = new SolidBrush(Color.DarkOliveGreen);
+            Brush bL = new SolidBrush(Color.Blue);
+            Brush gY = new SolidBrush(Color.GreenYellow);
+            Brush hp = new SolidBrush(Color.HotPink);
 
             for (int i = 0; i < rectangles.Count; i++)
             {
-                g.FillRectangle(b, rectangles[i]);
+                g.FillRectangle(dOG, rectangles[i]);
             }
 
         }
@@ -33,13 +35,25 @@ namespace gdi_PointAndClick
         private void FrmMain_MouseClick(object sender, MouseEventArgs e)
         {
             Point mausposition = e.Location;
+            bool überlapppung = false;
 
             Rectangle r = new Rectangle(mausposition.X-20, mausposition.Y-20, 40, 40);
 
-            rectangles.Add(r);  // Kurze Variante: rectangles.Add( new Rectangle(...)  );
+            rectangles.Add(r);// Kurze Variante: rectangles.Add( new Rectangle(...)  );
+            
+            for (int i = 0;i < rectangles.Count;i++)
+            {
+                if (rectangles[i].Contains(mausposition))
+                {
+                    überlapppung = true;
+                    break;
+                }
+            }
 
+            
             Refresh();
         }
+
 
         private void FrmMain_KeyDown(object sender, KeyEventArgs e)
         {
@@ -49,5 +63,6 @@ namespace gdi_PointAndClick
                 Refresh();
             }
         }
+
     }
 }
